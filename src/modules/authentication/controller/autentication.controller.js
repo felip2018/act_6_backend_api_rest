@@ -1,6 +1,7 @@
 import { loginService, registerService } from "../services/authentication.services.js";
 
 const loginController = (req, res) => {
+    console.log(req.body);
     const {username, password} = req.body;
     const result = loginService(username, password);
     res.json({
