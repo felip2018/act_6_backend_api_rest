@@ -14,22 +14,29 @@ const loginService = (username, password) => {
 }
 
 const registerService = (userInfo) => {
-    const newId = usersDatabase.length + 1;
-    const dataToSave = {
-        id: newId,
-        ...userInfo
-    };
-    const users = usersDatabase;
-    users.push(dataToSave);
-
-    fs.writeFile('src/persistence/users.json', JSON.stringify(users), (err) => {
-        console.log('ERR > ', err);
-        if (err) {
-            console.error('SOMETHING WAS WRONG > ', err);
-            return false;
-        }
+    const existsValidation = usersDatabase.find((element) => {
+        return element.document == userInfo.document;
     });
-    return true;
+
+    if (!existsValidation) {
+        const newId = usersDatabase.length + 1;
+        const dataToSave = {
+            id: newId,
+            ...userInfo
+        };
+        const users = usersDatabase;
+        users.push(dataToSave);
+
+        fs.writeFile('src/persistence/users.json', JSON.stringify(users), (err) => {
+            console.log('ERR > ', err);
+            if (err) {
+                console.error('SOMETHING WAS WRONG > ', err);
+                return false;
+            }
+        });
+        return true;
+    }
+    return false;
 }
 
 export {

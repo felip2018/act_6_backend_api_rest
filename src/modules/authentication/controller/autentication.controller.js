@@ -14,7 +14,7 @@ const registerController = (req, res) => {
     const result = registerService(req.body);
     console.log('registerController.result > ', result);
     res.json({
-        statusCode: result ? 200 : 400,
+        statusCode: result ? 200 : 409,
         result
     })
 }
