@@ -26,14 +26,10 @@ const save = (caseInfo) => {
 
 const get = (type, document = 0) => {
     let cases = [];
-    if (type === 'byUserId' && document !== 0) {
+    if (type === 'all' && document !== 0) {
         cases = casesDatabase.filter((element) => {
             return element.user_document == document;
         });
-    }
-
-    if (type === 'all') {
-        cases = casesDatabase;
     }
 
     return cases;

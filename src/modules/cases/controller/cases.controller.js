@@ -10,7 +10,7 @@ const saveController = (req, res) => {
 
 const getController = (req, res) => {
     const {type, document} = req.query;
-    result = get(type, document);
+    const result = get(type, document);
     res.json({
         statusCode: (true) ? 200 : 400,
         result
