@@ -8,7 +8,7 @@ import { casesRouter } from './modules/cases/router/cases.router.js';
 const app = express();
 
 // Config
-app.set('port', process.env.PORT || 3100);
+app.set('port', 3100);
 
 // Intermediarios
 app.use(morgan('dev'));
